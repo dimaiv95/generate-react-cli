@@ -2,11 +2,17 @@
   "name": "generate-react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "bin/generate-react",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/index.js"
+  },
+  "bin": {
+    "generate-react": "bin/generate-react"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^6.2.1"
+  }
 }
