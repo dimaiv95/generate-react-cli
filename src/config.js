@@ -1,3 +1,6 @@
 module.exports = {
-  path: "./src/components"
+  path: "./src/components",
+  withStyle: false,
+  usePreprocessor: "",
+  useTypescript: false
 };
