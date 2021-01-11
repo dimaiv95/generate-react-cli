@@ -1,122 +1,35 @@
+const path = require("path");
 const fse = require("fs-extra");
 
-const componetJsFunction = require("./templates/componetJsFunction");
-const componetTsFunction = require("./templates/componetTsFunction");
-const componetIndex = require("./templates/componetIndex");
-const componetStyle = require("./templates/componetStyle");
+const { transform } = require("./utils");
 
-const getComponentTemplate = (useTypescript) => useTypescript ? componetTsFunction : componetJsFunction;
+const {
+  componetJsFunction,
+  componetTsFunction,
+  componetStyle,
+  componetIndex
+} = require("./templates");
 
-const transform = (template, context) => template.replace(/\[(\w+)]/g, (_, name) => context[name]);
-
-const setTransform = function({ key, value }) {
-  this.transform[key] = value;
-
-  return this;
-};
-
-const setTemplate = ({ template, fileName }) => {
-  return {
-    template,
-    transform: {},
-    fileName,
-    setTransform
-  };
-};
-
-const getExtention = (condition, expectExt, defaultExt) => condition ? expectExt : defaultExt;
-
-const getMainTemplate = (componentName, { useTypescript, withStyle, usePreprocessor }) => {
-  const extComponent = getExtention(useTypescript, "tsx", "jsx")
-  const extStyle = getExtention(usePreprocessor, usePreprocessor, "css");
-
-  const componentTemplate = getComponentTemplate(useTypescript);
-
-  const template = setTemplate({
-    template: componentTemplate,
-    fileName: `${componentName}.${extComponent}`
-  });
-
-  template
-    .setTransform({
-      key: "TemplateName",
-      value: componentName
-    })
-    .setTransform({
-      key: "importStyle",
-      value: ""
-    })
-    .setTransform({
-      key: "className",
-      value: ""
-    });
-
-    if(withStyle){
-      template
-        .setTransform({
-          key: "importStyle",
-          value: `import "./${componentName}.${extStyle}";\n\r`
-        })
-        .setTransform({
-          key: "className",
-          value: ` className="${componentName}"`
-        });
-    }
-      
-    return template;
-};
-
-const getIndexTemplate = (componentName, { useTypescript }) => {
-  const extIndex = getExtention(useTypescript, "ts", "js");
-  const extComponent = getExtention(useTypescript, "tsx", "jsx");
-
-  const template = setTemplate({
-    template: componetIndex,
-    fileName: `index.${extIndex}`
-  });
-
-  template
-    .setTransform({
-      key: "importComponent",
-      value: `import ${componentName} from "./${componentName}.${extComponent}";\n\r`
-    })
-    .setTransform({
-      key: "exportComponent",
-      value: `export default ${componentName}`
-    });
-
-    return template;
-};
-
-const getStyleTemplate = (componentName, { usePreprocessor }) => {
-  const extStyle = getExtention(usePreprocessor, usePreprocessor, "css");
-
-  const template = setTemplate({
-    template: componetStyle,
-    fileName: `${componentName}.${extStyle}`
-  });
-
-  template
-    .setTransform({
-      key: "TemplateName",
-      value: componentName
-    })
-
-    return template;
-};
+const {
+  getMainTemplate,
+  getIndexTemplate,
+  getStyleTemplate
+} = require("./actions");
 
 const generateComponentTemplate = (componentName, args) => {
-  const { withStyle } = args;
+  const { withStyle, useTypescript } = args;
 
   const files = [];
 
+  const componentMain = useTypescript ? componetTsFunction : componetJsFunction
+
   const templates = [
-    getMainTemplate(componentName, args),
-    getIndexTemplate(componentName, args),
+    getMainTemplate(componentMain, componentName, args),
+    getIndexTemplate(componetIndex, componentName, args),
   ];
 
   if(withStyle){
-    templates.push(getStyleTemplate(componentName, args))
+    templates.push(getStyleTemplate(componetStyle, componentName, args))
   }
 
   templates.forEach(t => {
@@ -129,17 +42,19 @@ const generateComponentTemplate = (componentName, args) => {
   return files;
 };
 
-const generateComponent = (componentName, ...args) => {
-  const { path } = args[0];
+const generateComponent = (componentName, args) => {
+  const { path: pathDir } = args;
 
-  const componentTemplate = generateComponentTemplate(componentName, ...args);
+  const componentTemplate = generateComponentTemplate(componentName, args);
 
   try{
-    fse.emptyDirSync(`${path}/${componentName}`);
+    fse.emptyDirSync(path.join(pathDir, componentName));
 
     componentTemplate.forEach(component => {   
-      fse.writeFileSync(`${path}/${componentName}/${component.fileName}`, component.template);
+      fse.writeFileSync(path.join(pathDir, componentName, component.fileName), component.template);
     });
+
+    console.log(`Component ${componentName} was created`);
   }
   catch(e){
     console.error(e);
