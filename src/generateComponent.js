@@ -1,5 +1,7 @@
 const path = require("path");
 const fse = require("fs-extra");
+const chalk = require("chalk");
+const { log, error } = console;
 
 const { transform } = require("./utils");
 
@@ -54,10 +56,11 @@ const generateComponent = (componentName, args) => {
       fse.writeFileSync(path.join(pathDir, componentName, component.fileName), component.template);
     });
 
-    console.log(`Component ${componentName} was created`);
+    log(chalk.cyan(`Component ${chalk.cyan.bold.underline(componentName)} was created`));
+
   }
   catch(e){
-    console.error(e);
+    error(chalk.red(e));
     process.exit(1)
   }
 };

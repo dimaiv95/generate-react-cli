@@ -1,6 +1,6 @@
 const { program } = require("commander");
-const generateComponent = require("./generateComponent");
 const config = require("./config");
+const generateComponent = require("./generateComponent");
 
 module.exports = (argv) => {
   program
@@ -13,5 +13,5 @@ module.exports = (argv) => {
       components.forEach(c => generateComponent(c, args));
     });
 
-  program.parse(argv);
+    program.parse(argv);
 };
