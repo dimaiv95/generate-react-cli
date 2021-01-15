@@ -59,7 +59,7 @@ const generateComponent = <A extends Config>(componentName: string, args: A) => 
       fse.writeFileSync(path.join(pathDir, componentName, component.fileName), component.template);
     });
 
-    log(chalk.cyan(`Component ${chalk.cyan.bold.underline(componentName)} was created`));
+    log(chalk.cyan(`Component ${chalk.cyan.bold(componentName)} was created`));
 
   }
   catch(e){
