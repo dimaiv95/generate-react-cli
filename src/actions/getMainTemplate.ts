@@ -1,14 +1,14 @@
 import { Config, ComponentTemplate, SetTemplate} from "../types";
 
-import { setTemplate, getExtention } from "../utils";
+import { setTemplate, getDataBasedOnCondition } from "../utils";
 
 const getMainTemplate = (
   componentTemplate: ComponentTemplate,
   componentName: string,
   { useTypescript, withStyle, usePreprocessor }: Config
 ) => {
-  const extComponent = getExtention(useTypescript, "tsx", "jsx")
-  const extStyle = getExtention(!!usePreprocessor, usePreprocessor, "css");
+  const extComponent = getDataBasedOnCondition(useTypescript, "tsx", "jsx")
+  const extStyle = getDataBasedOnCondition(!!usePreprocessor, usePreprocessor, "css");
 
   const template: SetTemplate = setTemplate({
     template: componentTemplate,

@@ -1,14 +1,14 @@
 import { Config, ComponentTemplate, SetTemplate} from "../types";
 
-import { setTemplate, getExtention } from "../utils";
+import { setTemplate, getDataBasedOnCondition } from "../utils";
 
 const getIndexTemplate = (
   componentTemplate: ComponentTemplate,
   componentName: string,
   { useTypescript }: Config
 ) => {
-  const extIndex = getExtention(useTypescript, "ts", "js");
-  const extComponent = getExtention(useTypescript, "tsx", "jsx");
+  const extIndex = getDataBasedOnCondition(useTypescript, "ts", "js");
+  const extComponent = getDataBasedOnCondition(useTypescript, "tsx", "jsx");
 
   const template: SetTemplate = setTemplate({
     template: componentTemplate,

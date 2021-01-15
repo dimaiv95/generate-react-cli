@@ -21,7 +21,7 @@ const setTemplate = ({ template, fileName }: TemplateParams): SetTemplate => {
   };
 };
 
-const getExtention = <T, U>(
+const getDataBasedOnCondition = <T, U>(
   condition: boolean,
   expectExt: T,
   defaultExt: U
@@ -30,5 +30,5 @@ const getExtention = <T, U>(
 export {
   transform,
   setTemplate,
-  getExtention
+  getDataBasedOnCondition
 };

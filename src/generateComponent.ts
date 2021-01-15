@@ -4,7 +4,7 @@ import chalk from "chalk";
 
 import { Config, File, ComponentTemplate, SetTemplate } from "./types";
 
-import { transform } from "./utils";
+import { transform, getDataBasedOnCondition } from "./utils";
 
 import {
   ComponetJsFunction,
@@ -26,7 +26,7 @@ const generateComponentTemplate = <A extends Config>(componentName: string, args
 
   const files: File[] = [];
 
-  const ComponentMain: ComponentTemplate = useTypescript ? ComponetTsFunction : ComponetJsFunction
+  const ComponentMain: ComponentTemplate = getDataBasedOnCondition(useTypescript, ComponetTsFunction, ComponetJsFunction)
 
   const templates: SetTemplate[] = [
     getMainTemplate(ComponentMain, componentName, args),
