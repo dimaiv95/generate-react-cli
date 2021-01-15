@@ -1,10 +1,16 @@
-const { setTemplate, getExtention } = require("../utils");
+import { Config, ComponentTemplate, SetTemplate} from "../types";
 
-const getMainTemplate = (componentTemplate, componentName, { useTypescript, withStyle, usePreprocessor }) => {
+import { setTemplate, getExtention } from "../utils";
+
+const getMainTemplate = (
+  componentTemplate: ComponentTemplate,
+  componentName: string,
+  { useTypescript, withStyle, usePreprocessor }: Config
+) => {
   const extComponent = getExtention(useTypescript, "tsx", "jsx")
-  const extStyle = getExtention(usePreprocessor, usePreprocessor, "css");
+  const extStyle = getExtention(!!usePreprocessor, usePreprocessor, "css");
 
-  const template = setTemplate({
+  const template: SetTemplate = setTemplate({
     template: componentTemplate,
     fileName: `${componentName}.${extComponent}`
   });
@@ -38,4 +44,4 @@ const getMainTemplate = (componentTemplate, componentName, { useTypescript, with
     return template;
 };
 
-module.exports = getMainTemplate;
+export default getMainTemplate;

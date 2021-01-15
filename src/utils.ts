@@ -1,0 +1,34 @@
+import {
+  ComponentTemplate,
+  SetTemplate,
+  TemplateParams,
+  TransformParams,
+  Transform,
+} from "./types";
+
+const transform = (template: ComponentTemplate, context: Transform) => template.replace(/\[(\w+)]/g, (_, name) => context[name]);
+
+const setTemplate = ({ template, fileName }: TemplateParams): SetTemplate => {
+  return {
+    template,
+    transform: {},
+    fileName,
+    setTransform({ from, to }: TransformParams): SetTemplate {
+      this.transform[from] = to;
+    
+      return this;
+    }
+  };
+};
+
+const getExtention = <T, U>(
+  condition: boolean,
+  expectExt: T,
+  defaultExt: U
+): T | U => condition ? expectExt : defaultExt;
+
+export {
+  transform,
+  setTemplate,
+  getExtention
+};

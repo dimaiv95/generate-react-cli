@@ -1,10 +1,16 @@
-const { setTemplate, getExtention } = require("../utils");
+import { Config, ComponentTemplate, SetTemplate} from "../types";
 
-const getIndexTemplate = (componentTemplate, componentName, { useTypescript }) => {
+import { setTemplate, getExtention } from "../utils";
+
+const getIndexTemplate = (
+  componentTemplate: ComponentTemplate,
+  componentName: string,
+  { useTypescript }: Config
+) => {
   const extIndex = getExtention(useTypescript, "ts", "js");
   const extComponent = getExtention(useTypescript, "tsx", "jsx");
 
-  const template = setTemplate({
+  const template: SetTemplate = setTemplate({
     template: componentTemplate,
     fileName: `index.${extIndex}`
   });
@@ -22,4 +28,4 @@ const getIndexTemplate = (componentTemplate, componentName, { useTypescript }) =
     return template;
 };
 
-module.exports = getIndexTemplate;
+export default getIndexTemplate;
