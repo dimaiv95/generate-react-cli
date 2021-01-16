@@ -5,7 +5,7 @@ This tool provides fast creating React components and gets rid of copying, pasti
 ## Installation
 
 ```
-  npm install generate-react --save-dev
+  npm install generate-cli-react --save-dev
 ```
 
 ## Usage
