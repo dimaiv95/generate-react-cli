@@ -1,26 +1,31 @@
 {
   "name": "generate-react",
+  "homepage": "https://github.com/dmytroivanishin/generate-react-cli#readme",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple React CLI for generating components.",
   "main": "bin/generate-react",
   "scripts": {
     "build": "rimraf dist && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmytroivanishin/generate-react-cli.git"
   },
   "bin": {
     "generate-react": "bin/generate-react"
   },
   "keywords": [
-    "react",
-    "react cli",
-    "cli",
     "generate-react",
     "generate-react-cli",
-    "react component",
+    "react cli",
+    "cli",
     "generate react component",
     "generate component",
-    "component",
+    "react component",
     "generate",
-    "build tools"
+    "component",
+    "build tools",
+    "react"
   ],
   "author": "Dima Ivanishin",
   "license": "ISC",
