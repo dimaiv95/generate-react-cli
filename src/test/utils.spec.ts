@@ -1,4 +1,4 @@
-import { transform, setTemplate, getDataBasedOnCondition } from "../utils";
+import { transform, toCorrectName, setTemplate, getDataBasedOnCondition } from "../utils";
 import { ComponetStyle } from "../templates";
 import { SetTemplate } from "../types";
 
@@ -12,6 +12,30 @@ describe("Test util functions", () => {
       expect(result).toBe(expectTemplate)
     });
   });  
+
+  describe("function toCorrectName", () => {
+    it("should return correct data without any extra sybmols", () => {
+      const recieveData = [
+        "Card-Item",
+        "Post.Item",
+        "Post!",
+        "B#ox"
+      ];
+
+      const expectData = [
+        "CardItem",
+        "PostItem",
+        "Post",
+        "Box"
+      ];
+
+      recieveData.forEach((str, i) => {
+        const result = toCorrectName(str);
+
+        expect(result).toBe(expectData[i]);
+      });
+    });
+  });
 
   describe("function setTemplate", () => {
     it("should return virtual template for transforming", () => {
