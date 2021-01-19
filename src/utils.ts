@@ -8,6 +8,8 @@ import {
 
 const transform = (template: ComponentTemplate, context: Transform) => template.replace(/\[(\w+)]/g, (_, name) => context[name]);
 
+const toCorrectName = (str: string): string => str.replace(/[-\.\{\}\(\)\=\+\*\@\!\#\^\`\~\&\%\'\"\:\;]/g, () => "");
+
 const setTemplate = ({ template, fileName }: TemplateParams): SetTemplate => {
   return {
     template,
@@ -29,6 +31,7 @@ const getDataBasedOnCondition = <T, U>(
 
 export {
   transform,
+  toCorrectName,
   setTemplate,
   getDataBasedOnCondition
 };

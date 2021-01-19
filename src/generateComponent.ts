@@ -4,7 +4,7 @@ import chalk from "chalk";
 
 import { Config, File, ComponentTemplate, SetTemplate } from "./types";
 
-import { transform, getDataBasedOnCondition } from "./utils";
+import { transform, toCorrectName, getDataBasedOnCondition } from "./utils";
 
 import {
   ComponetJsFunction,
@@ -45,8 +45,10 @@ export const generateComponentTemplate = <A extends Config>(componentName: strin
   return files;
 };
 
-const generateComponent = <A extends Config>(componentName: string, args: A) => {
+const generateComponent = <A extends Config>(name: string, args: A) => {
   const { path: pathDir } = args;
+
+  const componentName = toCorrectName(name);
 
   const componentTemplate = generateComponentTemplate<A>(componentName, args);
 
