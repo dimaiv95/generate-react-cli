@@ -19,8 +19,6 @@ import {
   getStyleTemplate
 } from "./actions";
 
-const { log, error } = console;
-
 export const generateComponentTemplate = <A extends Config>(componentName: string, args: A): File[] => {
   const { withStyle, useTypescript } = args;
 
@@ -59,11 +57,10 @@ const generateComponent = <A extends Config>(componentName: string, args: A) => 
       fse.writeFileSync(path.join(pathDir, componentName, component.fileName), component.template);
     });
 
-    log(chalk.cyan(`Component ${chalk.cyan.bold(componentName)} was created`));
-
+    console.log(chalk.cyan(`Component ${chalk.cyan.bold(componentName)} was created`));
   }
   catch(e){
-    error(chalk.red(e));
+    console.error(chalk.red(e));
     process.exit(1)
   }
 };
