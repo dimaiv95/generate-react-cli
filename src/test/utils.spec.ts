@@ -1,15 +1,24 @@
 import { transform, toCorrectName, setTemplate, getDataBasedOnCondition } from "../utils";
-import { ComponetStyle } from "../templates";
+import { ComponetStyle, ComponetJsFunction } from "../templates";
+import { templatesWithStyle } from "./fixture";
 import { SetTemplate } from "../types";
 
 describe("Test util functions", () => {
   describe("function transform", () => {
     it("should return transformed template", () => {
-      const expectTemplate = ".Box{}"
-      
-      const result = transform(ComponetStyle, { TemplateName: "Box" });
+      const [ main ] = templatesWithStyle;
 
-      expect(result).toBe(expectTemplate)
+      const componentName = "Box";
+
+      const context = {
+        TemplateName: componentName,
+        importStyle: `import "./${componentName}.css";\n\r`,
+        className: ` className="${componentName}"`
+      };
+
+      const result = transform(ComponetJsFunction, context);
+
+      expect(result).toEqual(main.template)
     });
   });  
 
@@ -40,24 +49,24 @@ describe("Test util functions", () => {
   describe("function setTemplate", () => {
     it("should return virtual template for transforming", () => {
       const componentName = "Box";
-      const virtualTemplate: SetTemplate = setTemplate({
+      const template: SetTemplate = setTemplate({
         template: ComponetStyle,
         fileName: `${componentName}.css`
       });
 
-      virtualTemplate
+      template
         .setTransform({
           from: "TemplateName",
           to: componentName
         });
 
-      expect(virtualTemplate).toEqual({
+      expect(template).toEqual({
         template: ComponetStyle,
         fileName: `Box.css`,
         transform: {
           TemplateName: "Box"
         },
-        setTransform: virtualTemplate.setTransform
+        setTransform: template.setTransform
       });
     });
   });

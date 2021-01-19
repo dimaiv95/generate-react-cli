@@ -5,7 +5,7 @@ import {
   templatesWithTypescript,
   templatesWithStyle,
   templatesWithPreprocessor
-} from "./expectTemplates";
+} from "./fixture";
 
 import { File } from "../types";
 
