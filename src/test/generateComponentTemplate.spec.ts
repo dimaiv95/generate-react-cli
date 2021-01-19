@@ -1,13 +1,13 @@
-import config from './config';
-import { generateComponentTemplate } from "./generateComponent";
+import config from '../config';
+import { generateComponentTemplate } from "../generateComponent";
 import {
   templatesDefault,
   templatesWithTypescript,
   templatesWithStyle,
   templatesWithPreprocessor
-} from "./test/expectTemplates";
+} from "./expectTemplates";
 
-import { File } from "./types";
+import { File } from "../types";
 
 const expectFiles = (recieveFiles: File[], expectFiles: File[]) => {
   expect(recieveFiles).toHaveLength(recieveFiles.length);

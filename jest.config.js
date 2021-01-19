@@ -1,6 +1,7 @@
 module.exports = {
+  roots: ["<rootDir>/src/test/"],
   moduleFileExtensions: ["js", "ts"],
-  coverageReporters: ["text"],
+  coverageReporters: ["html"],
   transformIgnorePatterns: ["<rootDir>/node_modules/"],
   testMatch: [
     "**/*.(test|spec).ts"

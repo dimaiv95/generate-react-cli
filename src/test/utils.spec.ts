@@ -1,6 +1,6 @@
-import { transform, setTemplate, getDataBasedOnCondition } from "./utils";
-import { ComponetStyle } from "./templates";
-import { SetTemplate } from "./types";
+import { transform, setTemplate, getDataBasedOnCondition } from "../utils";
+import { ComponetStyle } from "../templates";
+import { SetTemplate } from "../types";
 
 describe("Test util functions", () => {
   describe("function transform", () => {
