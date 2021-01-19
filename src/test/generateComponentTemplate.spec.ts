@@ -9,8 +9,9 @@ import {
 
 import { File } from "../types";
 
-const expectFiles = (recieveFiles: File[], expectFiles: File[]) => {
-  expect(recieveFiles).toHaveLength(recieveFiles.length);
+const expectFiles = (recieveFiles: File[], expectFiles: File[], length: number) => {
+  expect(recieveFiles).toHaveLength(length);
+
   recieveFiles.forEach((f, i) => expect(f).toEqual(expectFiles[i]))
 };
 
@@ -18,24 +19,24 @@ describe("Generate templates", () => {
   it("should be 2 template files by default", () => {
     const result = generateComponentTemplate("Box", config);
 
-    expectFiles(result, templatesDefault);
+    expectFiles(result, templatesDefault, 2);
   });
 
   it("should be 3 template files with flag useTypescript", () => {
     const result = generateComponentTemplate("Box", { ...config, useTypescript: true });
 
-    expectFiles(result, templatesWithTypescript);
+    expectFiles(result, templatesWithTypescript, 2);
   });
 
   it("should be 3 template files with flag withStyle", () => {
      const result = generateComponentTemplate("Box", { ...config, withStyle: true });
 
-     expectFiles(result, templatesWithStyle);
+     expectFiles(result, templatesWithStyle, 3);
   });
 
   it("should be 3 template files with flag withStyle and usePreprocessor", () => {
     const result = generateComponentTemplate("Box", { ...config, withStyle: true, usePreprocessor: "scss" });
 
-    expectFiles(result, templatesWithPreprocessor);
+    expectFiles(result, templatesWithPreprocessor, 3);
   });
 });
