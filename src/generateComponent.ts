@@ -21,7 +21,7 @@ import {
 
 const { log, error } = console;
 
-const generateComponentTemplate = <A extends Config>(componentName: string, args: A): File[] => {
+export const generateComponentTemplate = <A extends Config>(componentName: string, args: A): File[] => {
   const { withStyle, useTypescript } = args;
 
   const files: File[] = [];
