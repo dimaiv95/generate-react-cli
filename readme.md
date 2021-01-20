@@ -13,7 +13,7 @@ This tool provides fast creating React components and gets rid of copying, pasti
 This command create a folder with your component within default directory.
 
 ```
-  npx generate-react component Button
+  npx generate-react component Box
 ```
 
 You can also generate a few components at once.
@@ -27,8 +27,8 @@ You can also generate a few components at once.
 ```
 |-- /src
     |-- /components
-        |-- /Button
-            |-- Button.js
+        |-- /Box
+            |-- Box.js
             |-- index.js
 ```
 
@@ -37,7 +37,18 @@ You can also generate a few components at once.
 You can also overwrite default options.
 
 ```
-  npx generate-react component Home --withStyle --usePreprocessor scss
+  npx generate-react component Box --withStyle --usePreprocessor scss
+```
+
+### Example of the component files structure with options above:
+
+```
+|-- /src
+    |-- /components
+        |-- /Box
+            |-- Box.js
+            |-- Box.scss
+            |-- index.js
 ```
 
 <table>
