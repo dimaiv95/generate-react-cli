@@ -1,11 +1,8 @@
-import {
-  ComponetJsFunction,
-  ComponetTsFunction,
-  ComponetIndex,
-  ComponetStyle
-} from "./templates";
+import * as templates from "./templates";
 
-export type ComponentTemplate = ComponetJsFunction | ComponetTsFunction | ComponetIndex | ComponetStyle;
+type Templates<T> = T extends { [ key: string ]: infer U } ? U : never;
+
+export type ComponentTemplate = Templates<typeof templates>;
 
 export type TemplateParams = {
   template: ComponentTemplate,
