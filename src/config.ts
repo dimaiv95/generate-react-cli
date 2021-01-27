@@ -4,7 +4,8 @@ const config: Config = {
   path: "./src/components",
   withStyle: false,
   usePreprocessor: "",
-  useTypescript: false
+  useTypescript: false,
+  withTestEnzyme: false
 };
 
 export default config;

@@ -35,4 +35,5 @@ export type Config = {
   withStyle: boolean,
   usePreprocessor: string,
   useTypescript: boolean
+  withTestEnzyme: boolean
 };
