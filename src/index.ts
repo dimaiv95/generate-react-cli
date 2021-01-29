@@ -12,7 +12,7 @@ export = <T extends string[]>(argv: T): void => {
     .option("--withStyle", "Creates a stylesheet file with this component.", config.withStyle)
     .option("--usePreprocessor <preprocessor>", "Creates a stylesheet file used a preprocessor such as scss with this component.", config.usePreprocessor)
     .option("--useTypescript", "Creates the typescript component.", config.useTypescript)
-    .option("--withTestEnzyme", "Creates the component with test file with library Enzyme.", config.withTestEnzyme)
+    .option("--useTest <test>", "Creates the component with test file with library Enzyme.", config.useTest)
     .action((components: string[], args: Config) => {
       components.forEach(c => generateComponent<Config>(c, args));
     });
