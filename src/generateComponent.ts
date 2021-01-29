@@ -22,7 +22,7 @@ import {
 } from "./actions";
 
 export const generateComponentTemplate = <A extends Config>(componentName: string, args: A): File[] => {
-  const { withStyle, useTypescript, withTestEnzyme } = args;
+  const { withStyle, useTypescript, useTest } = args;
 
   const files: File[] = [];
 
@@ -34,11 +34,11 @@ export const generateComponentTemplate = <A extends Config>(componentName: strin
   ];
 
   if(withStyle){
-    templates.push(getStyleTemplate(ComponetStyle, componentName, args))
+    templates.push(getStyleTemplate(ComponetStyle, componentName, args));
   }
 
-  if(withTestEnzyme){
-    templates.push(getTestEnzymeTemplate(ComponetTestEnzyme, componentName, args))
+  if(useTest === "enzyme"){
+    templates.push(getTestEnzymeTemplate(ComponetTestEnzyme, componentName, args));
   }
 
   templates.forEach(t => {
