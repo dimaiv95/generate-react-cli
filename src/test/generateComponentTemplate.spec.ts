@@ -9,10 +9,10 @@ import {
 
 import { File } from "../types";
 
-const expectFiles = (recieveFiles: File[], expectFiles: File[], length: number) => {
-  expect(recieveFiles).toHaveLength(length);
+const expectFiles = (receiveFiles: File[], expectFiles: File[], length: number) => {
+  expect(receiveFiles).toHaveLength(length);
 
-  recieveFiles.forEach((f, i) => expect(f).toEqual(expectFiles[i]))
+  receiveFiles.forEach((f, i) => expect(f).toEqual(expectFiles[i]))
 };
 
 describe("Generate templates", () => {
