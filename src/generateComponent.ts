@@ -21,7 +21,7 @@ import {
   getTestEnzymeTemplate
 } from "./actions";
 
-export const generateComponentTemplate = <A extends Config>(componentName: string, args: A): File[] => {
+export const generateComponentTemplate = (componentName: string, args: Config): File[] => {
   const { withStyle, useTypescript, useTest } = args;
 
   const files: File[] = [];
@@ -51,12 +51,12 @@ export const generateComponentTemplate = <A extends Config>(componentName: strin
   return files;
 };
 
-const generateComponent = <A extends Config>(name: string, args: A) => {
+const generateComponent = (name: string, args: Config) => {
   const { path: pathDir } = args;
 
   const componentName = toCorrectName(name);
 
-  const componentTemplate = generateComponentTemplate<A>(componentName, args);
+  const componentTemplate = generateComponentTemplate(componentName, args);
 
   try{
     fse.emptyDirSync(path.join(pathDir, componentName));
