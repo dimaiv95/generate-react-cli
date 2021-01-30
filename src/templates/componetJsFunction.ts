@@ -1,7 +1,7 @@
 const ComponetJsFunction = `import React from "react";
 [importStyle]
 const [TemplateName] = () => (
-  <div[className]>Hi, I\'m a [TemplateName]</div>
+  <div[className]>[TemplateName] Component</div>
 );
 
 export default [TemplateName];
