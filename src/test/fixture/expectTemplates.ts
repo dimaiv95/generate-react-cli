@@ -3,7 +3,7 @@ export const templatesDefault = [
     template: 'import React from "react";\n' +
       '\n' +
       'const Box = () => (\n' +
-      '  <div></div>\n' +
+      '  <div>Hi, I\'m a Box</div>\n' +
       ');\n' +
       '\n' +
       'export default Box;\n',
@@ -20,7 +20,7 @@ export const templatesWithTypescript = [
     template: 'import React from "react";\n' +
       '\n' +
       'const Box: React.FC = () => (\n' +
-      '  <div></div>\n' +
+      '  <div>Hi, I\'m a Box</div>\n' +
       ');\n' +
       '\n' +
       'export default Box;\n',
@@ -38,7 +38,7 @@ export const templatesWithStyle = [
       'import "./Box.css";\n' +
       '\r\n' +
       'const Box = () => (\n' +
-      '  <div className="Box"></div>\n' +
+      '  <div className="Box">Hi, I\'m a Box</div>\n' +
       ');\n' +
       '\n' +
       'export default Box;\n',
@@ -57,7 +57,7 @@ export const templatesWithPreprocessor = [
       'import "./Box.scss";\n' +
       '\r\n' +
       'const Box = () => (\n' +
-      '  <div className="Box"></div>\n' +
+      '  <div className="Box">Hi, I\'m a Box</div>\n' +
       ');\n' +
       '\n' +
       'export default Box;\n',
@@ -75,7 +75,7 @@ export const templatesWithUseTestEnzyme = [
     template: 'import React from "react";\n' +
       '\n' +
       'const Box = () => (\n' +
-      '  <div></div>\n' +
+      '  <div>Hi, I\'m a Box</div>\n' +
       ');\n' +
       '\n' +
       'export default Box;\n',
@@ -101,5 +101,5 @@ export const templatesWithUseTestEnzyme = [
       '  });\n' + 
       '});\n',
     fileName: 'Box.spec.jsx'
-}
+  }
 ];
