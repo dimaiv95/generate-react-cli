@@ -5,7 +5,8 @@ import {
   templatesWithTypescript,
   templatesWithStyle,
   templatesWithPreprocessor,
-  templatesWithUseTestEnzyme
+  templatesWithUseTestEnzyme,
+  templatesWithUseTestingLibrary
 } from "./fixture";
 
 import { File } from "../types";
@@ -45,5 +46,11 @@ describe("Generate templates", () => {
     const result = generateComponentTemplate("Box", { ...config, useTest: "enzyme" });
 
     expectFiles(result, templatesWithUseTestEnzyme, 3);
+  });
+
+  it("should be 3 template files with flag useTest and value testingLibrary", () => {
+    const result = generateComponentTemplate("Box", { ...config, useTest: "testingLibrary" });
+
+    expectFiles(result, templatesWithUseTestingLibrary, 3);
   });
 });

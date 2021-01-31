@@ -103,3 +103,37 @@ export const templatesWithUseTestEnzyme = [
     fileName: 'Box.spec.jsx'
   }
 ];
+
+export const templatesWithUseTestingLibrary = [
+  {
+    template: 'import React from "react";\n' +
+      '\n' +
+      'const Box = () => (\n' +
+      '  <div>Box Component</div>\n' +
+      ');\n' +
+      '\n' +
+      'export default Box;\n',
+    fileName: 'Box.jsx'
+  },
+  {
+    template: 'import Box from "./Box.jsx";\n\r\nexport default Box;\n',
+    fileName: 'index.js'
+  },
+  {
+    template: 'import React from "react";\n' + 
+      'import { render, screen } from "@testing-library/react";\n' +
+      'import "@testing-library/jest-dom/extend-expect";\n' +
+      'import Box from "./Box.jsx";\n' +
+      '\n' +
+      'describe("<Box />", () => {\n' +
+      '  test("It should mount", () => {\n' + 
+      '    render(<Box />);\n' + 
+      '\n' + 
+      '    const templateText = screen.getByText("Box Component");\n' + 
+      '\n' + 
+      '    expect(templateText).toBeInTheDocument();\n' + 
+      '  });\n' + 
+      '});',
+    fileName: 'Box.spec.jsx'
+  }
+];

@@ -3,7 +3,8 @@ import {
   templatesWithTypescript,
   templatesWithStyle,
   templatesWithPreprocessor,
-  templatesWithUseTestEnzyme
+  templatesWithUseTestEnzyme,
+  templatesWithUseTestingLibrary
 } from "./expectTemplates";
 
 export {
@@ -11,5 +12,6 @@ export {
   templatesWithTypescript,
   templatesWithStyle,
   templatesWithPreprocessor,
-  templatesWithUseTestEnzyme
+  templatesWithUseTestEnzyme,
+  templatesWithUseTestingLibrary
 };
