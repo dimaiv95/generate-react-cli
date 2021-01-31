@@ -10,17 +10,20 @@ import {
   ComponetJsFunction,
   ComponetTsFunction,
   ComponetStyle,
-  ComponetIndex
+  ComponetIndex,
+  ComponetTestEnzyme,
+  ComponetTestTestingLibrary
 } from "./templates";
 
 import {
   getMainTemplate,
   getIndexTemplate,
-  getStyleTemplate
+  getStyleTemplate,
+  getTestTemplate
 } from "./actions";
 
-export const generateComponentTemplate = <A extends Config>(componentName: string, args: A): File[] => {
-  const { withStyle, useTypescript } = args;
+export const generateComponentTemplate = (componentName: string, args: Config): File[] => {
+  const { withStyle, useTypescript, useTest } = args;
 
   const files: File[] = [];
 
@@ -32,7 +35,14 @@ export const generateComponentTemplate = <A extends Config>(componentName: strin
   ];
 
   if(withStyle){
-    templates.push(getStyleTemplate(ComponetStyle, componentName, args))
+    templates.push(getStyleTemplate(ComponetStyle, componentName, args));
+  }
+
+  if(useTest === "enzyme"){
+    templates.push(getTestTemplate(ComponetTestEnzyme, componentName, args));
+  }
+  if(useTest === "testingLibrary"){
+    templates.push(getTestTemplate(ComponetTestTestingLibrary, componentName, args));
   }
 
   templates.forEach(t => {
@@ -45,12 +55,12 @@ export const generateComponentTemplate = <A extends Config>(componentName: strin
   return files;
 };
 
-const generateComponent = <A extends Config>(name: string, args: A) => {
+const generateComponent = (name: string, args: Config) => {
   const { path: pathDir } = args;
 
   const componentName = toCorrectName(name);
 
-  const componentTemplate = generateComponentTemplate<A>(componentName, args);
+  const componentTemplate = generateComponentTemplate(componentName, args);
 
   try{
     fse.emptyDirSync(path.join(pathDir, componentName));

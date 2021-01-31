@@ -2,12 +2,16 @@ import {
   templatesDefault,
   templatesWithTypescript,
   templatesWithStyle,
-  templatesWithPreprocessor
+  templatesWithPreprocessor,
+  templatesWithUseTestEnzyme,
+  templatesWithUseTestingLibrary
 } from "./expectTemplates";
 
 export {
   templatesDefault,
   templatesWithTypescript,
   templatesWithStyle,
-  templatesWithPreprocessor
+  templatesWithPreprocessor,
+  templatesWithUseTestEnzyme,
+  templatesWithUseTestingLibrary
 };

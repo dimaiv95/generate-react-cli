@@ -25,9 +25,9 @@ const setTemplate = ({ template, fileName }: TemplateParams): SetTemplate => {
 
 const getDataBasedOnCondition = <T, U>(
   condition: boolean,
-  expectExt: T,
-  defaultExt: U
-): T | U => condition ? expectExt : defaultExt;
+  expectRes: T,
+  defaultRes: U
+): T | U => condition ? expectRes : defaultRes;
 
 export {
   transform,

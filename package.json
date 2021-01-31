@@ -1,7 +1,7 @@
 {
   "name": "generate-cli-react",
   "homepage": "https://github.com/dmytroivanishin/generate-react-cli#readme",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A simple React CLI for generating components.",
   "main": "bin/generate-react",
   "scripts": {

@@ -17,9 +17,6 @@ describe("Create component", () => {
 
   
   const expectSuccess = (config: Config, writeFileHaveBeenCalledTimes: number) => {
-    emptyDirSync.mockImplementation(args => args);
-    writeFileSync.mockImplementation(args => args);
-
     const expectLog = chalk.cyan(`Component ${chalk.cyan.bold(componentName)} was created`)
 
     generateComponent(componentName, config);
@@ -51,6 +48,9 @@ describe("Create component", () => {
     log = jest.spyOn(console, "log").mockImplementation(args => args);
     error = jest.spyOn(console, "error").mockImplementation(args => args);
     exit = jest.spyOn(process, "exit").mockImplementation((code) => code as never);
+
+    emptyDirSync.mockImplementation(args => args);
+    writeFileSync.mockImplementation(args => args);
   });
 
   afterEach(() => {

@@ -1,7 +1,7 @@
 const ComponetTsFunction = `import React from "react";
 [importStyle]
 const [TemplateName]: React.FC = () => (
-  <div[className]></div>
+  <div[className]>[TemplateName] Component</div>
 );
 
 export default [TemplateName];
