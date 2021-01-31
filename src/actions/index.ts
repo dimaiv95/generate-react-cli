@@ -1,11 +1,11 @@
 import getMainTemplate from "./getMainTemplate";
 import getIndexTemplate from "./getIndexTemplate";
 import getStyleTemplate from "./getStyleTemplate";
-import getTestEnzymeTemplate from "./getTestEnzymeTemplate";
+import getTestTemplate from "./getTestTemplate";
 
 export {
   getMainTemplate,
   getIndexTemplate,
   getStyleTemplate,
-  getTestEnzymeTemplate
+  getTestTemplate
 };
