@@ -11,7 +11,8 @@ import {
   ComponetTsFunction,
   ComponetStyle,
   ComponetIndex,
-  ComponetTestEnzyme
+  ComponetTestEnzyme,
+  ComponetTestTestingLibrary
 } from "./templates";
 
 import {
@@ -39,6 +40,9 @@ export const generateComponentTemplate = (componentName: string, args: Config): 
 
   if(useTest === "enzyme"){
     templates.push(getTestTemplate(ComponetTestEnzyme, componentName, args));
+  }
+  if(useTest === "testingLibrary"){
+    templates.push(getTestTemplate(ComponetTestTestingLibrary, componentName, args));
   }
 
   templates.forEach(t => {
