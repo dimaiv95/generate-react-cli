@@ -5,7 +5,7 @@ const config: Config = {
   withStyle: false,
   usePreprocessor: "",
   useTypescript: false,
-  useTest: "none"
+  useTest: ""
 };
 
 export default config;
