@@ -18,7 +18,7 @@ import {
   getMainTemplate,
   getIndexTemplate,
   getStyleTemplate,
-  getTestEnzymeTemplate
+  getTestTemplate
 } from "./actions";
 
 export const generateComponentTemplate = (componentName: string, args: Config): File[] => {
@@ -38,7 +38,7 @@ export const generateComponentTemplate = (componentName: string, args: Config): 
   }
 
   if(useTest === "enzyme"){
-    templates.push(getTestEnzymeTemplate(ComponetTestEnzyme, componentName, args));
+    templates.push(getTestTemplate(ComponetTestEnzyme, componentName, args));
   }
 
   templates.forEach(t => {
