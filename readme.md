@@ -51,21 +51,6 @@ You can also overwrite default options.
             |-- index.js
 ```
 
-```
-  npx generate-react component Box --useTest testingLibrary
-```
-
-### Example of the component files structure with options above:
-
-```
-|-- /src
-    |-- /components
-        |-- /Box
-            |-- Box.js
-            |-- Box.scss
-            |-- index.js
-```
-
 <table>
   <tr align="left">
     <th>Options</th>
