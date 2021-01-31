@@ -51,6 +51,21 @@ You can also overwrite default options.
             |-- index.js
 ```
 
+```
+  npx generate-react component Box --useTest testingLibrary
+```
+
+### Example of the component files structure with options above:
+
+```
+|-- /src
+    |-- /components
+        |-- /Box
+            |-- Box.js
+            |-- Box.scss
+            |-- index.js
+```
+
 <table>
   <tr align="left">
     <th>Options</th>
@@ -71,15 +86,21 @@ You can also overwrite default options.
     <td width="20%">false</td>
   </tr>
   <tr align="left">
+    <td width="10%">--useTypescript</td>
+    <td width="50%">Creates the typescript component.</td>
+    <td width="20%">Boolean</td>
+    <td width="20%">false</td>
+  </tr>
+  <tr align="left">
     <td width="10%">--usePreprocessor</td>
     <td width="50%">Creates a stylesheet file used a preprocessor such as scss with this component.</td>
     <td width="20%">String</td>
     <td width="20%">""</td>
   </tr>
   <tr align="left">
-    <td width="10%">--useTypescript</td>
-    <td width="50%">Creates the typescript component.</td>
-    <td width="20%">Boolean</td>
-    <td width="20%">false</td>
+    <td width="10%">--useTest</td>
+    <td width="50%">Creates test file with library enzyme or testingLibrary with this component.</td>
+    <td width="20%">String</td>
+    <td width="20%">""</td>
   </tr>
 <table>
